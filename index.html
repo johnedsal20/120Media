@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>120 Media | Fotografías & Videos | Puerto Rico</title>
+    <style>
+        :root {
+            --black: #000000;
+            --deep-red: #8B0000;
+            --orange: #FE5F04;
+            --gunmetal: #3C3C3C;
+            --charcoal: #2B2B2B;
+            --cool-gray: #6B6B6B;
+            --soft-concrete: #A8A8A8;
+            --cream: #F0ECED;
+            --teal: #02343F;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--orange); }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 22px 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--cream);
+            text-decoration: none;
+        }
+        .logo span { color: var(--orange); }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 44px;
+        }
+
+        nav a {
+            color: var(--soft-concrete);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--orange); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 64px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 70% at 20% 50%, rgba(139,0,0,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 80% 80%, rgba(254,95,4,0.07) 0%, transparent 60%);
+        }
+
+        .hero-line {
+            position: absolute;
+            top: 0;
+            left: 64px;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--gunmetal), transparent);
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1240px;
+            width: 100%;
+            margin: 0 auto;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--orange);
+        }
+
+        .hero-name {
+            font-size: clamp(64px, 8vw, 108px);
+            font-weight: 900;
+            line-height: 0.92;
+            letter-spacing: -3px;
+        }
+
+        .hero-name .line2 {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-bio {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--soft-concrete);
+            max-width: 480px;
+            border-left: 2px solid var(--orange);
+            padding-left: 20px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--cream);
+            letter-spacing: -1px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--cool-gray);
+            display: block;
+            margin-top: 4px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--black);
+            padding: 16px 40px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            color: var(--soft-concrete);
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+        .btn-ghost::after {
+            content: '→';
+            color: var(--orange);
+            transition: transform 0.3s;
+        }
+        .btn-ghost:hover { color: var(--orange); }
+        .btn-ghost:hover::after { transform: translateX(4px); }
+
+        /* ── Instagram Card ── */
+        .ig-card {
+            background: var(--charcoal);
+            border: 1px solid rgba(254,95,4,0.25);
+            padding: 28px;
+            position: relative;
+        }
+
+        .ig-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), var(--deep-red));
+        }
+
+        .ig-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .ig-profile {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .ig-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid var(--orange);
+            object-fit: cover;
+        }
+
+        .ig-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--cream);
+        }
+
+        .ig-handle {
+            font-size: 12px;
+            color: var(--cool-gray);
+            margin-top: 3px;
+        }
+
+        .ig-icon svg {
+            opacity: 0.35;
+        }
+
+        .ig-stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            border-top: 1px solid var(--gunmetal);
+            border-bottom: 1px solid var(--gunmetal);
+            padding: 14px 0;
+            margin-bottom: 16px;
+        }
+
+        .ig-stat-val {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--cream);
+        }
+
+        .ig-stat-lbl {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cool-gray);
+            margin-top: 2px;
+        }
+
+        .ig-bio {
+            font-size: 12.5px;
+            color: var(--soft-concrete);
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .ig-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+        }
+
+        .ig-grid img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            filter: brightness(0.8);
+            transition: filter 0.3s;
+        }
+        .ig-grid img:hover { filter: brightness(1.05); }
+
+        .ig-follow-btn {
+            display: block;
+            text-align: center;
+            margin-top: 14px;
+            padding: 10px;
+            border: 1px solid var(--gunmetal);
+            color: var(--soft-concrete);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .ig-follow-btn:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* ── SECTION COMMON ── */
+        .section-tag {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--orange);
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-tag::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--orange);
+        }
+
+        .section-title {
+            font-size: clamp(36px, 4.5vw, 60px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+        }
+
+        /* ── SERVICES ── */
+        .services {
+            padding: 110px 64px;
+        }
+
+        .services-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-end;
+            margin-bottom: 64px;
+        }
+
+        .services-intro {
+            font-size: 16px;
+            color: var(--cool-gray);
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--gunmetal);
+        }
+
+        .service-card {
+            background: var(--charcoal);
+            padding: 44px 36px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.35s;
+        }
+        .service-card:hover { background: #333; }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.4s ease;
+        }
+        .service-card:hover::after { width: 100%; }
+
+        .svc-num {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gunmetal);
+            margin-bottom: 28px;
+        }
+
+        .svc-icon {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .svc-title {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--cream);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .svc-desc {
+            font-size: 13.5px;
+            color: var(--cool-gray);
+            line-height: 1.75;
+        }
+
+        /* ── GALLERY ── */
+        .gallery { padding: 0 0 110px; }
+
+        .gallery-inner { max-width: 1240px; margin: 0 auto; padding: 0 64px; }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .btn-outline {
+            color: var(--soft-concrete);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--gunmetal);
+            padding: 12px 24px;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 300px 300px;
+            gap: 4px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--charcoal);
+        }
+
+        .gallery-item.featured {
+            grid-row: 1 / 3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.65) saturate(0.7);
+            transition: all 0.5s ease;
+        }
+        .gallery-item:hover img {
+            filter: brightness(0.9) saturate(1);
+            transform: scale(1.04);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        .gallery-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        /* ── ABOUT ── */
+        .about {
+            background: var(--charcoal);
+            padding: 110px 64px;
+        }
+
+        .about-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-img-wrap {
+            position: relative;
+        }
+
+        .about-img-wrap img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: brightness(0.8) saturate(0.8);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            background: var(--orange);
+            color: var(--black);
+            padding: 18px 22px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about-text p {
+            font-size: 15.5px;
+            color: var(--soft-concrete);
+            line-height: 1.85;
+        }
+
+        .capabilities {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+            margin-top: 8px;
+        }
+
+        .cap-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--cream);
+        }
+
+        .cap-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--orange);
+            flex-shrink: 0;
+        }
+
+        /* ── CONTACT ── */
+        .contact {
+            padding: 110px 64px;
+        }
+
+        .contact-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .contact-left h2 { margin-top: 16px; }
+
+        .contact-left p {
+            font-size: 15.5px;
+            color: var(--cool-gray);
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .contact-right {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-item {
+            border-bottom: 1px solid var(--gunmetal);
+            padding-bottom: 28px;
+        }
+
+        .contact-item-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--cool-gray);
+            margin-bottom: 8px;
+        }
+
+        .contact-item-val {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+        .contact-item-val:hover { color: var(--orange); }
+
+        .contact-cta {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--charcoal);
+            border-top: 1px solid var(--gunmetal);
+            padding: 32px 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            font-size: 11px;
+            color: var(--cool-gray);
+            letter-spacing: 1px;
+        }
+
+        .footer-logo {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--cream);
+        }
+        .footer-logo span { color: var(--orange); }
+
+        /* ── MOBILE ── */
+        @media (max-width: 960px) {
+            nav { padding: 20px 28px; }
+            nav ul { display: none; }
+
+            .hero { padding: 100px 28px 60px; }
+            .hero-content { grid-template-columns: 1fr; gap: 48px; }
+
+            .services { padding: 70px 28px; }
+            .services-header { grid-template-columns: 1fr; gap: 24px; }
+            .services-grid { grid-template-columns: 1fr; }
+
+            .gallery-inner { padding: 0 28px; }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .gallery-item.featured { grid-row: auto; }
+
+            .about { padding: 70px 28px; }
+            .about-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            .contact { padding: 70px 28px; }
+            .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="#" class="logo">120 <span>MEDIA</span></a>
+    <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+        <div class="hero-left">
+            <span class="hero-eyebrow">📍 Puerto Rico · Producción Audiovisual</span>
+            <h1 class="hero-name">
+                120
+                <span class="line2">MEDIA</span>
+            </h1>
+            <p class="hero-bio">
+                Creamos visuales que elevan marcas. Fotografía profesional y producción de video para negocios, eventos y marcas en Puerto Rico.
+            </p>
+            <div class="hero-stats">
+                <div>
+                    <span class="stat-num">4.4K</span>
+                    <span class="stat-label">Seguidores</span>
+                </div>
+                <div>
+                    <span class="stat-num">14</span>
+                    <span class="stat-label">Proyectos</span>
+                </div>
+                <div>
+                    <span class="stat-num">6+</span>
+                    <span class="stat-label">Categorías</span>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="#contacto" class="btn-primary">Trabajemos juntos</a>
+                <a href="#portafolio" class="btn-ghost">Ver portafolio</a>
+            </div>
+        </div>
+
+        <!-- Instagram Card -->
+        <div>
+            <div class="ig-card">
+                <div class="ig-top">
+                    <div class="ig-profile">
+                        <img src="assets/profile.jpg" alt="120 Media" class="ig-avatar">
+                        <div>
+                            <div class="ig-name">120 Media</div>
+                            <div class="ig-handle">@120__media</div>
+                        </div>
+                    </div>
+                    <div class="ig-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F0ECED" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="0.5" fill="#F0ECED"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="ig-stats-row">
+                    <div>
+                        <div class="ig-stat-val">14</div>
+                        <div class="ig-stat-lbl">Posts</div>
+                    </div>
+                    <div>
+                        <div class="ig-stat-val">4,430</div>
+                        <div class="ig-stat-lbl">Seguidores</div>
+                    </div>
+                    <div>
+                        <div class="ig-stat-val">632</div>
+                        <div class="ig-stat-lbl">Siguiendo</div>
+                    </div>
+                </div>
+                <p class="ig-bio">🎥 Creamos visuales que elevan marcas<br>📸 Fotografías &amp; Videos<br>🔝 @bsocialagencypr<br>📍 Puerto Rico</p>
+                <div class="ig-grid">
+                    <img src="assets/post_2.jpg" alt="Sports">
+                    <img src="assets/post_3.jpg" alt="Comercios">
+                    <img src="assets/post_4.jpg" alt="Contenido">
+                    <img src="assets/post_5.jpg" alt="Recaps">
+                    <img src="assets/post_6.jpg" alt="Paisajes">
+                    <img src="assets/post_7.jpg" alt="Fotos">
+                </div>
+                <a href="https://www.instagram.com/120__media/" target="_blank" class="ig-follow-btn">Seguir en Instagram</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+    <div class="services-inner">
+        <div class="services-header">
+            <div>
+                <p class="section-tag">Lo que hacemos</p>
+                <h2 class="section-title">Servicios que<br>elevan tu marca</h2>
+            </div>
+            <p class="services-intro">
+                Desde fotografía de producto hasta cobertura de eventos en vivo — todo lo que necesitas para que tu marca se vea profesional y conecte con tu audiencia.
+            </p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="svc-num">01 —</div>
+                <div class="svc-icon">📸</div>
+                <h3 class="svc-title">Fotografía Profesional</h3>
+                <p class="svc-desc">Sesiones para marcas, negocios y comercios. Imágenes que capturan la esencia de tu negocio y conectan con tu audiencia.</p>
+            </div>
+            <div class="service-card">
+                <div class="svc-num">02 —</div>
+                <div class="svc-icon">🎥</div>
+                <h3 class="svc-title">Producción de Video</h3>
+                <p class="svc-desc">Videos publicitarios y reels que generan impacto. Producción completa desde el concepto hasta la entrega final.</p>
+            </div>
+            <div class="service-card">
+                <div class="svc-num">03 —</div>
+                <div class="svc-icon">🏆</div>
+                <h3 class="svc-title">Cobertura de Eventos</h3>
+                <p class="svc-desc">Cobertura fotográfica y videográfica de eventos deportivos, culturales y corporativos. Recaps dinámicos para redes.</p>
+            </div>
+            <div class="service-card">
+                <div class="svc-num">04 —</div>
+                <div class="svc-icon">🏪</div>
+                <h3 class="svc-title">Contenido para Comercios</h3>
+                <p class="svc-desc">Estrategia visual completa: fotografía de producto, videos de marca y contenido mensual para redes sociales.</p>
+            </div>
+            <div class="service-card">
+                <div class="svc-num">05 —</div>
+                <div class="svc-icon">🌿</div>
+                <h3 class="svc-title">Fotografía de Paisajes</h3>
+                <p class="svc-desc">Captamos la belleza natural y urbana de Puerto Rico. Fotografía de paisajes para proyectos especiales y colecciones de arte.</p>
+            </div>
+            <div class="service-card">
+                <div class="svc-num">06 —</div>
+                <div class="svc-icon">🎬</div>
+                <h3 class="svc-title">Paquetes Mensuales</h3>
+                <p class="svc-desc">Paquetes de contenido para mantener tu presencia digital activa. Fotografías y videos listos para publicar cada mes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="portafolio">
+    <div class="gallery-inner">
+        <div class="gallery-header">
+            <div>
+                <p class="section-tag">Portafolio</p>
+                <h2 class="section-title">Nuestro trabajo</h2>
+            </div>
+            <a href="https://www.instagram.com/120__media/" target="_blank" class="btn-outline">Ver todo en Instagram</a>
+        </div>
+    </div>
+    <div style="padding: 0 64px; max-width: 1240px; margin: 0 auto;">
+        <div class="gallery-grid">
+            <div class="gallery-item featured">
+                <img src="assets/post_8.jpg" alt="La Tribu de Abrante">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Cultura · Eventos · Puerto Rico</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/post_9.jpg" alt="Producción 120 Media">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Contenido · Video</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/post_2.jpg" alt="Sports">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Sports</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/post_3.jpg" alt="Comercios">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Comercios</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/post_6.jpg" alt="Paisajes">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Paisajes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+    <div class="about-inner">
+        <div class="about-img-wrap">
+            <img src="assets/post_9.jpg" alt="120 Media en acción">
+            <div class="about-badge">Puerto Rico 🇵🇷</div>
+        </div>
+        <div class="about-text">
+            <p class="section-tag">Nosotros</p>
+            <h2 class="section-title">Visuales que<br>cuentan historias</h2>
+            <p>En 120 Media creemos que cada marca tiene una historia única que merece ser contada con imágenes poderosas. Somos un equipo de producción audiovisual basado en Puerto Rico, especializados en crear contenido visual que conecta, emociona y convierte.</p>
+            <p>Trabajamos con marcas, negocios, deportistas y artistas para elevar su presencia visual. Cada proyecto es único y lo tratamos con la atención y el cuidado que merece.</p>
+            <div class="capabilities">
+                <div class="cap-item"><div class="cap-dot"></div>Fotografía Profesional</div>
+                <div class="cap-item"><div class="cap-dot"></div>Producción de Video</div>
+                <div class="cap-item"><div class="cap-dot"></div>Eventos Deportivos</div>
+                <div class="cap-item"><div class="cap-dot"></div>Contenido para Redes</div>
+                <div class="cap-item"><div class="cap-dot"></div>Cobertura Cultural</div>
+                <div class="cap-item"><div class="cap-dot"></div>Paquetes Mensuales</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+    <div class="contact-inner">
+        <div class="contact-left">
+            <p class="section-tag">Contacto</p>
+            <h2 class="section-title">¿Listo para elevar<br>tu marca?</h2>
+            <p>Cuéntanos tu proyecto y te respondemos en menos de 24 horas. Trabajamos con marcas y negocios en Puerto Rico y más allá.</p>
+        </div>
+        <div class="contact-right">
+            <div class="contact-item">
+                <div class="contact-item-label">Email</div>
+                <a href="mailto:johnedsal20@gmail.com" class="contact-item-val">johnedsal20@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-label">Instagram</div>
+                <a href="https://www.instagram.com/120__media/" target="_blank" class="contact-item-val">@120__media</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-label">Agencia</div>
+                <a href="https://www.instagram.com/bsocialagencypr/" target="_blank" class="contact-item-val">@bsocialagencypr</a>
+            </div>
+            <div class="contact-item" style="border-bottom: none; padding-bottom: 0;">
+                <div class="contact-item-label">Ubicación</div>
+                <span class="contact-item-val" style="cursor: default;">Puerto Rico 🇵🇷</span>
+            </div>
+            <div class="contact-cta">
+                <a href="mailto:johnedsal20@gmail.com" class="btn-primary">Enviar mensaje</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2024 120 Media · Puerto Rico · Todos los derechos reservados</p>
+    <span class="footer-logo">120 <span>MEDIA</span></span>
+    <p>Fotografías &amp; Videos</p>
+</footer>
+
+</body>
+</html>
